@@ -1,0 +1,11 @@
+#!/bin/sh
+echo ""
+echo "Expands a short url & displays the original url."
+echo ""
+echo "Enter a short url: "
+read input_variable
+if long=$(curl -s -o /dev/null --head -w "%{url_effective}\n" -L "$input_variable"); then
+echo "Original url -> $long"
+else
+echo "Sorry! Invalid url!"
+fi
